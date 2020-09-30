@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Inputs will be processed here
-       
+        ProcessInputs();
         
     }
 
@@ -25,19 +25,23 @@ public class PlayerMovement : MonoBehaviour
         depending on how many physics frames per second are set in the time settings, and how fast/slow the framerate is.
         That will enable the game to run smoothly on different computers, at different framerates */
         
+        PlayerMove();
 
 
     }
 
     void ProcessInputs()
     {
-        //todo
+        movement = Vector2.zero;
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        
 
     }
 
     void PlayerMove()
     {
-        //todo
+        playerRigidbody.MovePosition(playerRigidbody.position + movement * speed * Time.fixedDeltaTime);
     }
 
 
